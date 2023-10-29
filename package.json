@@ -2,7 +2,7 @@
   "name": "weather-forecast",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://elizabethmedvedeva.github.io/weather_forecast/",
+  "homepage": "https://github.com/Redh221/weather_forecast/",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
