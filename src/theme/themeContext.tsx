@@ -3,7 +3,7 @@ import { ThemeContext } from ".";
 import { themetype, Themes } from "./theme";
 
 export const ThemeContextProvider = ({ children }: any) => {
-  const [theme, setTheme] = useState<themetype>("light");
+  const [theme, setTheme] = useState<themetype>("dark");
 
   const changeTheme = () => {
     const value = theme === "light" ? "dark" : "light";
