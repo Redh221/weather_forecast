@@ -1,9 +1,16 @@
-import { useContext, useState } from "react";
-import { ThemeContext } from ".";
-import { themetype, Themes } from "./theme";
+import { ReactNode, useContext, useState } from "react";
 
-export const ThemeContextProvider = ({ children }: any) => {
-  const [theme, setTheme] = useState<themetype>("dark");
+import { Themes, themetype } from "./theme";
+import { ThemeContext } from ".";
+
+interface ThemeContextProviderProps {
+  children: ReactNode;
+}
+
+export const ThemeContextProvider = ({
+  children,
+}: ThemeContextProviderProps) => {
+  const [theme, setTheme] = useState<themetype>("light");
 
   const changeTheme = () => {
     const value = theme === "light" ? "dark" : "light";

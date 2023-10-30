@@ -1,58 +1,58 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchTodaysHightlights } from "../../redux/reducers/APIreducer";
+import { fetchTodaysHighlights } from "../../redux/reducers/APIreducer";
+import {
+  CityInterface,
+  ITodayHighlight,
+} from "../../redux/reducers/reducerTypes";
 import { AppDispatch, StoreType } from "../../redux/store";
+import { IThemeContext } from "../../theme/theme";
+import { useThemeContext } from "../../theme/themeContext";
 
 import {
   CoupleWeatherDetailsDiv,
   SunTimeContainer,
   SunTimeDiv,
   SunTimeInfo,
-  TemmperatureDiv,
-  TodaysHightlightsContainer,
-  TodaysHightlightSet,
-  TodaysHightlightsIcon,
+  TemperatureDiv,
+  TodaysHighlightsContainer,
+  TodaysHighlightSet,
+  TodaysHighlightsIcon,
   WeatherDetailsDiv,
   WeatherDetailsIcon,
   WeatherDetailsSet,
 } from "./todaysHighlights.Styled";
-import { useThemeContext } from "../../theme/themeContext";
-import { IThemeContext } from "../../theme/theme";
-import {
-  CityInterface,
-  ITodayHighlight,
-} from "../../redux/reducers/reducerTypes";
 
-export const TodaysHightlights = () => {
+export const TodaysHighlights = () => {
   const themeContextData: IThemeContext = useThemeContext();
 
   const todaysHighlights: ITodayHighlight | null = useSelector(
-    (state: StoreType) => state.daysForecastReducer.todaysHightLights
+    (state: StoreType) => state.daysForecastReducer.todaysHighlights,
   );
 
   const selectedCity: CityInterface = useSelector(
-    (state: StoreType) => state.daysForecastReducer.selectedCity
+    (state: StoreType) => state.daysForecastReducer.selectedCity,
   );
 
   const { error } = useSelector(
-    (state: StoreType) => state.daysForecastReducer
+    (state: StoreType) => state.daysForecastReducer,
   );
 
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(
-      fetchTodaysHightlights({
+      fetchTodaysHighlights({
         latitude: selectedCity.latitude,
         longitude: selectedCity.longitude,
         timezone: selectedCity.timezone,
-      })
+      }),
     );
   }, [selectedCity]);
 
   return (
-    <TodaysHightlightsContainer
+    <TodaysHighlightsContainer
       themestyles={themeContextData.stylesForTheme}
       themetype={themeContextData.currentTheme}
     >
@@ -60,29 +60,29 @@ export const TodaysHightlights = () => {
       {error ? (
         <p>Error: {error}</p>
       ) : (
-        <TodaysHightlightSet>
+        <TodaysHighlightSet>
           <SunTimeContainer>
             <SunTimeDiv>
-              <TodaysHightlightsIcon src="assets/sunriseTH.png" alt="sunrise" />
+              <TodaysHighlightsIcon src="assets/sunriseTH.png" alt="sunrise" />
               <SunTimeInfo>
                 <h5>Sunrise</h5>
                 <h5>{todaysHighlights?.sunriseTime}</h5>
               </SunTimeInfo>
             </SunTimeDiv>
             <SunTimeDiv>
-              <TodaysHightlightsIcon src="assets/sunsetTH.png" alt="sunset" />
+              <TodaysHighlightsIcon src="assets/sunsetTH.png" alt="sunset" />
               <SunTimeInfo>
                 <h5>Sunset</h5>
                 <h5>{todaysHighlights?.sunsetTime}</h5>
               </SunTimeInfo>
             </SunTimeDiv>
           </SunTimeContainer>
-          <TemmperatureDiv
+          <TemperatureDiv
             themestyles={themeContextData.stylesForTheme}
             themetype={themeContextData.currentTheme}
           >
             <h3>{todaysHighlights?.temperature}°C</h3>
-          </TemmperatureDiv>
+          </TemperatureDiv>
           <WeatherDetailsSet>
             <CoupleWeatherDetailsDiv>
               <WeatherDetailsDiv>
@@ -116,8 +116,8 @@ export const TodaysHightlights = () => {
               </WeatherDetailsDiv>
             </CoupleWeatherDetailsDiv>
           </WeatherDetailsSet>
-        </TodaysHightlightSet>
+        </TodaysHighlightSet>
       )}
-    </TodaysHightlightsContainer>
+    </TodaysHighlightsContainer>
   );
 };

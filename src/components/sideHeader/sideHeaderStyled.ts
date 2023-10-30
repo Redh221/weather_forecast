@@ -10,22 +10,24 @@ export const SideHeaderDiv = styled.div`
     padding-top: 10px;
     display: flex;
     justify-content: space-evenly;
-    align-content: ;
+    align-content:;
     align-items: center;
   }
 `;
 
 export const SideHeaderIconDiv = styled.div`
   padding: 50px 10px;
+  max-width: 84px;
+  margin: 0 auto;
   @media (max-width: 656px) {
     padding: 10px;
-  }
-`;
-
-export const SideHeaderIcon = styled.img`
-  max-width: 84px;
-  height: auto;
-  @media (max-width: 656px) {
     max-width: 44px;
   }
+`;
+interface SideHeaderIconProps {
+  width?: string;
+}
+export const SideHeaderIcon = styled.img<SideHeaderIconProps>`
+  height: auto;
+  width: ${(props) => (props.width ? props.width : "100%")};
 `;

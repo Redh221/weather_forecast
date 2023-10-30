@@ -1,7 +1,9 @@
 import moment from "moment";
+
 import { ITodayHighlight } from "../redux/reducers/reducerTypes";
 
-export const fillHightlightsData = (serverResponse: any, timezone: string) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const fillHighlightsData = (serverResponse: any, timezone: string) => {
   const currentCityTime = moment().tz(timezone);
   let timeIndex = serverResponse.hourly.time.length;
   for (let i = 0; i < serverResponse.hourly.time.length; i++) {

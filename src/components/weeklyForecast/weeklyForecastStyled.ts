@@ -1,6 +1,8 @@
 import { styled } from "styled-components";
-import { ForecastDayAmount } from "./dailyTemp";
+
 import { Theme, themetype } from "../../theme/theme";
+
+import { ForecastDayAmount } from "./weeklyForecast";
 interface IDayAmount {
   dayAmount: ForecastDayAmount;
 }
@@ -15,7 +17,6 @@ export const WeeklyContainer = styled.div`
 export const SevenDaysDiv = styled.div`
   display: flex;
   flex-direction: row;
-
   @media (max-width: 960px) {
     display: none;
   }
@@ -24,7 +25,7 @@ export const SevenDaysDiv = styled.div`
 export const DailyTempContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  flexdirection: column;
+  flex-direction: column;
   margin: 10px;
   @media (max-width: 1200px) {
     margin: 6px;
@@ -67,7 +68,6 @@ export const DailyTempCardBox = styled.div<StyledInterface>`
   @media (max-width: 670px) {
     width: 150px;
   }
-
   h5 {
     font-size: 30px;
     @media (max-width: 1890px) {
@@ -171,7 +171,6 @@ export const FourteenDaysButton = styled.button<IDayAmount & StyledInterface>`
   display: ${(props) => (props.dayAmount === "Seven" ? "none" : "")};
   background: ${({ themestyles }) => themestyles.backgroundButtonLinear};
   color: ${({ themestyles }) => themestyles.text};
-
   width: 70%;
   border: none;
   font-size: 40px;
@@ -183,12 +182,9 @@ export const FourteenDaysButton = styled.button<IDayAmount & StyledInterface>`
   &:not(:hover) {
     opacity: transition: opacity 0.3s;
   }
-
   @media (max-width: 960px) {
     display: none;
   }
-
-
 `;
 
 export const SevenDaysButton = styled.button<IDayAmount & StyledInterface>`
@@ -200,7 +196,6 @@ export const SevenDaysButton = styled.button<IDayAmount & StyledInterface>`
   font-size: 40px;
   opacity: 0.2;
   transition: opacity 0.3s;
-
   &:hover {
     opacity: 1;
   }

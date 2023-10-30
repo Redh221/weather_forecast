@@ -1,58 +1,49 @@
 import { useState } from "react";
-import { IThemeContext } from "../../theme/theme";
-import {
-  FavoritveBtn,
-  StyledOptionCitiesButton,
-} from "./searchLocation.Styled";
+
 import { CityInterface } from "../../redux/reducers/reducerTypes";
+import { IThemeContext } from "../../theme/theme";
+
+import { FavoriteBtn, StyledOptionCitiesButton } from "./searchLocation.Styled";
 
 interface IOptionCityButton {
   city: CityInterface;
   themeContext: IThemeContext;
-  cityInputHanlder: (event: any) => void;
-  favoriteInputHanlder: (event: any) => void;
+  cityInputHandler: (event: React.MouseEvent<HTMLElement>) => void;
+  favoriteInputHandler: (event: React.MouseEvent<HTMLElement>) => void;
   marked: boolean;
 }
 
 export const OptionCitiesButton = ({
   city,
   themeContext,
-  cityInputHanlder,
-  favoriteInputHanlder,
+  cityInputHandler,
+  favoriteInputHandler,
   marked,
 }: IOptionCityButton) => {
-  const [showFavoriteButton, setshowFavoriteButton] = useState<boolean>(marked);
-
-  const setshowFavoriteButtonFunc = (event: any) => {
-    setshowFavoriteButton(!showFavoriteButton);
-    favoriteInputHanlder(event);
-  };
-
   return (
     <>
-      {" "}
       <div style={{ position: "relative" }}>
         <StyledOptionCitiesButton
           themestyles={themeContext.stylesForTheme}
           themetype={themeContext.currentTheme}
           key={city.id}
           data-id={city.id}
-          onClick={cityInputHanlder}
+          onClick={cityInputHandler}
         >
           {city.name} / {city.country}
         </StyledOptionCitiesButton>
-        {showFavoriteButton ? (
-          <FavoritveBtn
+        {marked ? (
+          <FavoriteBtn
             key={`button-${city.id}`}
             data-id={city.id}
-            onClick={setshowFavoriteButtonFunc}
+            onClick={favoriteInputHandler}
             className="icon-heart-fill"
           />
         ) : (
-          <FavoritveBtn
+          <FavoriteBtn
             key={`button-${city.id}`}
             data-id={city.id}
-            onClick={setshowFavoriteButtonFunc}
+            onClick={favoriteInputHandler}
             className="icon-heart-stroke"
           />
         )}

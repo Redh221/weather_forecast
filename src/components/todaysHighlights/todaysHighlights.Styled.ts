@@ -1,11 +1,13 @@
 import styled from "styled-components";
+
 import { Theme, themetype } from "../../theme/theme";
+
 interface StyledInterface {
   themestyles: Theme;
   themetype: themetype;
 }
 
-export const TodaysHightlightsContainer = styled.div<StyledInterface>`
+export const TodaysHighlightsContainer = styled.div<StyledInterface>`
   height: 400px;
   border-radius: 30px;
   background: ${({ themestyles }) => themestyles.backgroundLinear};
@@ -28,7 +30,7 @@ export const TodaysHightlightsContainer = styled.div<StyledInterface>`
   }
 `;
 
-export const TodaysHightlightSet = styled.div`
+export const TodaysHighlightSet = styled.div`
   display: flex;
   margin: 0 auto;
   justify-content: space-evenly;
@@ -55,6 +57,7 @@ export const SunTimeDiv = styled.div`
     padding: 0;
   }
 `;
+
 export const SunTimeInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -63,7 +66,8 @@ export const SunTimeInfo = styled.div`
     font-size: 15px;
   }
 `;
-export const TodaysHightlightsIcon = styled.img`
+
+export const TodaysHighlightsIcon = styled.img`
   height: auto;
   width: 75px;
   @media (max-width: 1064px) {
@@ -71,7 +75,7 @@ export const TodaysHightlightsIcon = styled.img`
   }
 `;
 
-export const TemmperatureDiv = styled.div<StyledInterface>`
+export const TemperatureDiv = styled.div<StyledInterface>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,6 +94,7 @@ export const TemmperatureDiv = styled.div<StyledInterface>`
     }
   }
 `;
+
 export const WeatherDetailsSet = styled.div`
   display: flex;
   flex-direction: row;
@@ -123,6 +128,7 @@ export const WeatherDetailsDiv = styled.div`
     }
   }
 `;
+
 export const WeatherDetailsIcon = styled.img`
   height: auto;
   max-width: 60px;
